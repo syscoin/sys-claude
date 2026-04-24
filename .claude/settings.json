@@ -1,0 +1,281 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_COORDINATOR_MODE": "1",
+    "CLAUDE_CODE_EFFORT_LEVEL": "auto",
+    "BASH_MAX_OUTPUT_LENGTH": "30000",
+    "MAX_MCP_OUTPUT_TOKENS": "25000"
+  },
+
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {
+      "denyWrite": ["~/.ssh", "~/.gnupg", "~/.aws", "~/.syscoin", "~/.ethereum", "~/.foundry/keystores"]
+    }
+  },
+
+  "enableAllProjectMcpServers": true,
+
+  "defaultMode": "default",
+
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
+
+  "includeCoAuthoredBy": false,
+
+  "permissions": {
+    "allow": [
+      "Bash(forge *)",
+      "Bash(cast *)",
+      "Bash(anvil *)",
+      "Bash(chisel *)",
+      "Bash(hardhat *)",
+      "Bash(npx hardhat *)",
+      "Bash(solc *)",
+      "Bash(slither *)",
+      "Bash(mythril *)",
+      "Bash(solhint *)",
+      "Bash(surya *)",
+
+      "Bash(syscoin-cli *)",
+      "Bash(syscoind *)",
+      "Bash(syscoin-tx *)",
+      "Bash(syscoin-util *)",
+      "Bash(syscoin-wallet *)",
+
+      "Bash(npm *)",
+      "Bash(yarn *)",
+      "Bash(pnpm *)",
+      "Bash(bun *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(tsx *)",
+      "Bash(tsc *)",
+      "Bash(next *)",
+      "Bash(vite *)",
+      "Bash(vitest *)",
+      "Bash(prettier *)",
+      "Bash(eslint *)",
+
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git fetch *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git stash *)",
+      "Bash(git tag *)",
+      "Bash(git remote *)",
+      "Bash(git submodule *)",
+      "Bash(git blame *)",
+      "Bash(git cherry-pick *)",
+      "Bash(gh *)",
+
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(fd *)",
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(echo *)",
+      "Bash(printf *)",
+      "Bash(pwd)",
+      "Bash(cd *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(wc *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(diff *)",
+      "Bash(tree *)",
+      "Bash(which *)",
+      "Bash(command *)",
+      "Bash(type *)",
+      "Bash(env *)",
+      "Bash(export *)",
+      "Bash(date *)",
+      "Bash(basename *)",
+      "Bash(dirname *)",
+      "Bash(realpath *)",
+      "Bash(readlink *)",
+      "Bash(xargs *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(cut *)",
+      "Bash(tr *)",
+      "Bash(tee *)",
+      "Bash(jq *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(tar *)",
+      "Bash(unzip *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(file *)",
+      "Bash(stat *)",
+      "Bash(sha256sum *)",
+      "Bash(md5sum *)",
+      "Bash(base64 *)",
+      "Bash(openssl *)",
+
+      "Bash(docker build *)",
+      "Bash(docker run *)",
+      "Bash(docker compose *)",
+      "Bash(docker ps *)",
+      "Bash(docker logs *)",
+      "Bash(docker images *)",
+      "Bash(docker exec *)",
+      "Bash(docker stop *)",
+      "Bash(docker inspect *)",
+
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(pip *)",
+      "Bash(pip3 *)",
+
+      "Bash(just *)",
+      "Bash(make *)",
+      "Bash(cmake *)",
+
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Agent(*)",
+      "WebFetch(*)",
+      "WebSearch(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~*)",
+      "Bash(rm -rf .*)",
+      "Bash(sudo *)",
+      "Bash(chmod 777 *)",
+      "Bash(chmod -R 777 *)",
+      "Bash(chown *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)",
+      "Bash(shutdown *)",
+      "Bash(reboot *)",
+      "Bash(kill -9 *)",
+      "Bash(killall *)",
+      "Bash(pkill *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -fd *)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f *)",
+      "Bash(cast send *mainnet*)",
+      "Bash(cast wallet import *)",
+      "Bash(forge script * --broadcast*)",
+      "Bash(hardhat run * --network mainnet*)",
+      "Bash(npx hardhat run * --network mainnet*)",
+      "Bash(syscoin-cli sendtoaddress *)",
+      "Bash(syscoin-cli sendfrom *)",
+      "Bash(syscoin-cli sendmany *)",
+      "Bash(syscoin-cli walletpassphrasechange *)",
+      "Bash(syscoin-cli dumpwallet *)",
+      "Bash(syscoin-cli dumpprivkey *)",
+      "Bash(docker rm *)",
+      "Bash(docker rmi *)",
+      "Bash(docker system prune *)"
+    ]
+  },
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🤖 Syscoin Claude Config is ON 🔗⚡ Core + NEVM development'\necho ''\nif command -v syscoin-cli >/dev/null 2>&1; then\n  echo \"🪙 syscoin-cli: $(syscoin-cli --version 2>/dev/null | head -1 || echo 'not running')\"\nelse\n  echo 'ℹ️  syscoin-cli not installed (optional for NEVM-only projects)'\nfi\nif command -v forge >/dev/null 2>&1; then\n  echo \"🔨 forge: $(forge --version 2>/dev/null | head -1)\"\nfi\nif command -v npx >/dev/null 2>&1 && [ -f package.json ] && grep -q hardhat package.json 2>/dev/null; then\n  echo '📦 hardhat project detected'\nfi"
+          }
+        ]
+      }
+    ],
+
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"🤖 Agent completed: ${CLAUDE_SUBAGENT_NAME:-unknown}\""
+          }
+        ]
+      }
+    ],
+
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -z \"$CLAUDE_FILE_PATH\" ]; then exit 0; fi\n\ncase \"$CLAUDE_FILE_PATH\" in\n  *.sol)\n    command -v forge >/dev/null 2>&1 && forge fmt \"$CLAUDE_FILE_PATH\" 2>/dev/null || true\n    ;;\n  *.ts|*.tsx|*.js|*.jsx|*.json|*.md)\n    command -v npx >/dev/null 2>&1 && npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true\n    ;;\nesac"
+          }
+        ]
+      },
+
+      {
+        "matcher": "Bash",
+        "when": {
+          "command_matches": "forge test|hardhat test|npx hardhat test"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"\"\necho \"📊 Test Summary:\";\nif [ \"$CLAUDE_TOOL_EXIT_CODE\" -eq 0 ]; then\n  echo \"✅ All tests passed!\"\nelse\n  echo \"❌ Some tests failed. Review output above.\"\nfi"
+          }
+        ]
+      }
+    ],
+
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "when": {
+          "command_matches": "git commit"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "set -e\n\necho \"🔍 Running pre-commit checks...\"\n\nif [ -f \"foundry.toml\" ]; then\n  forge fmt --check || { forge fmt; exit 1; }\n  forge build --sizes || exit 1\nfi\n\nif [ -f \"hardhat.config.ts\" ] || [ -f \"hardhat.config.js\" ]; then\n  npx hardhat compile || exit 1\nfi\n\nif [ -f \"package.json\" ]; then\n  npx prettier --check \"**/*.{ts,tsx,js,jsx,json,sol}\" 2>/dev/null || { npx prettier --write \"**/*.{ts,tsx,js,jsx,json,sol}\" 2>/dev/null; exit 1; }\n  [ -f \"tsconfig.json\" ] && npx tsc --noEmit || exit 1\nfi\n\necho \"✅ Pre-commit checks passed\""
+          }
+        ]
+      },
+
+      {
+        "matcher": "Bash",
+        "when": {
+          "command_matches": "forge script.*--broadcast|hardhat run.*--network (nevm|mainnet)|syscoin-cli.*mainnet"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "set -e\n\necho \"🚨 PRE-DEPLOY CHECKS\"\necho \"⚠️  This appears to be a mainnet or broadcasting operation.\"\necho \"Type 'DEPLOY TO NEVM MAINNET' to continue:\";\nread -r CONFIRM;\n[ \"$CONFIRM\" = \"DEPLOY TO NEVM MAINNET\" ] || exit 1\necho \"✅ Pre-deploy checks passed\""
+          }
+        ]
+      }
+    ]
+  },
+
+  "modelDefaults": {
+    "agent": "opus",
+    "command": "sonnet"
+  }
+}

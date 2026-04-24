@@ -1,0 +1,10 @@
+# External skill submodules — to be added during Phase 5.
+#
+# Planned:
+#   trailofbits/skills  → .claude/skills/ext/trailofbits       (audit patterns, EVM-applicable)
+#   cloudflare/skills   → .claude/skills/ext/cloudflare        (infra, Workers)
+#   vercel-labs/agent-skills → .claude/skills/ext/vercel       (Next.js, AI SDK, deploy)
+#
+# Add via:
+#   git submodule add <url> .claude/skills/ext/<name>
+#   git add .gitmodules .claude/skills/ext/<name>
