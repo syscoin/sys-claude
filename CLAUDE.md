@@ -61,14 +61,18 @@ Rationale: the Syscoin documentation's canonical smart-contract deploy tutorial 
 
 ## Roadmap
 
+Delivery is sliced by domain (contracts → core → frontend/devops) rather than by phase number. Contract-focused content ships first.
+
 - [x] **Phase 1** — Repo scaffold (v0.1.0)
-- [ ] **Phase 2** — Rules: solidity.md, hardhat.md, foundry.md, ethers.md, viem.md, syscoin-core.md, typescript.md
-- [ ] **Phase 3** — Core agents (6–8): syscoin-architect, solidity-engineer, syscoin-core-engineer, nevm-frontend-engineer, syscoin-qa-engineer, devops-engineer, syscoin-guide, syscoin-researcher
-- [ ] **Phase 4** — Commands: build/test/deploy/quality workflow set
-- [ ] **Phase 5** — Skills: local authored (spt-tokens, syscoin-core-rpc, nevm-deployment, pali-wallet, syscoin-reference via llms.txt) + vendored submodules
-- [ ] **Phase 6** — MCP + settings polish
-- [ ] **Phase 7** — Tests + CI
-- [ ] **Phase 8** — Finalize CLAUDE-syscoin.md
+- [x] **Phase 2 (contracts)** — Rules: `solidity.md`, `hardhat.md`, `foundry.md`, `typescript.md` (v0.2.0)
+- [x] **Phase 3 (contracts)** — Agents: `solidity-engineer`, `syscoin-architect`, `nevm-qa-engineer` (v0.2.0)
+- [ ] **Phase 4 (contracts)** — Commands: build/test/deploy/quality for NEVM (`/build-contracts`, `/test-foundry`, `/test-hardhat`, `/audit-syscoin`, `/gas-profile`, `/deploy`, `/verify-contract`, `/diff-review`)
+- [ ] **Future — Core/UTXO**: rules and skills for Syscoin Core (SPT, PSBT, syscoin-cli, syscoinjs-lib). Out of scope for v1 contracts bundle.
+- [ ] **Future — Frontend / DevOps**: `nevm-frontend-engineer`, `devops-engineer`, `syscoin-guide`, `syscoin-researcher` agents
+- [ ] **Future — Skills**: `syscoin-reference.md` (llms.txt index), `spt-tokens.md`, `bridge-nevm-utxo.md`, `pali-wallet.md`
+- [ ] **Future — MCP**: EVM RPC and explorer MCP servers
+- [ ] **Future — Tests + CI**: shell-based integrity tests + GitHub Actions
+- [ ] **Future — Finalize CLAUDE-syscoin.md** based on real-world feedback
 
 ## When Editing This Repo
 

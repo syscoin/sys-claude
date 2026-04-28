@@ -129,4 +129,13 @@ function deposit(address token, uint256 amount) external returns (uint256 newBal
 
 ## Syscoin NEVM — deployment verification
 
-Block explorer verification uses Blockscout-compatible endpoints. For Hardhat, use `@nomicfoundation/hardhat-verify` with a custom chain entry. For Foundry, pass `--verifier blockscout --verifier-url`. Details live in `nevm-deployment.md` (skill) — this rule just flags that verification is expected.
+Block explorer verification uses Blockscout-compatible endpoints (`/api`), not Etherscan. For Hardhat, use `@nomicfoundation/hardhat-verify` with a `customChains` entry. For Foundry, pass `--verifier blockscout --verifier-url`. Verification is expected as part of every public deployment.
+
+## NEVM block-time semantics
+
+NEVM block time is **~2.5 minutes** (PoW merge-mined with Bitcoin), versus Ethereum's ~12 seconds. Practical consequences for time-based logic:
+
+- `block.timestamp` advances slowly. Cooldowns, vesting cliffs, auction windows feel chunkier than on Ethereum.
+- Use `block.timestamp` directly for time gates; do **not** use `block.number * average_block_time` — block intervals are variable.
+- Tests that simulate time passing should use `vm.warp()` (Foundry) or `time.increase()` (Hardhat helpers), not loops over `mine`.
+- Effective finality is fast via Chainlocks (masternode-signed checkpoints), but raw block confirmations are slow. Don't hardcode "wait N blocks" patterns lifted from Ethereum guides.

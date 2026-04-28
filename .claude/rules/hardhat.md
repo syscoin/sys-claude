@@ -112,7 +112,7 @@ const config: HardhatUserConfig = {
 export default config;
 ```
 
-Network naming: use **`tanenbaum`** for testnet and **`nevm`** for mainnet. Avoid `mainnet` as a key — that name is reserved-feeling and makes deploy commands dangerously ambiguous in error messages.
+Network naming: use **`tanenbaum`** for testnet and **`nevm`** for mainnet. Avoid `mainnet` as a key — in multi-chain projects it conventionally refers to Ethereum, and the ambiguity makes accidental cross-chain deploys easier (a `--network mainnet` flag in shell history could mean the wrong thing).
 
 ## Deploy Script Pattern
 

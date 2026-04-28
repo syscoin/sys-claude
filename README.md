@@ -64,35 +64,29 @@ cp syscoin-claude-config/CLAUDE-syscoin.md /path/to/your-project/CLAUDE.md
 
 ## Planned Components
 
-### Agents (~6–8, first cut)
+### Agents — contracts bundle (delivered in v0.2.0)
 
 | Agent | Purpose |
 |-------|---------|
-| `syscoin-architect` | Cross-layer design (Core vs NEVM), SPT vs ERC-20 tradeoffs, bridging |
-| `solidity-engineer` | NEVM Solidity contracts with Hardhat/Foundry |
-| `syscoin-core-engineer` | UTXO, SPT, PSBT, node RPC |
-| `nevm-frontend-engineer` | Viem/wagmi/Ethers, Pali + MetaMask flows |
-| `syscoin-qa-engineer` | Foundry fuzzing, Hardhat tests, regtest for Core |
-| `devops-engineer` | Node infra, RPC providers, CI/CD |
-| `syscoin-guide` | Learning and tutorials |
-| `syscoin-researcher` | Ecosystem research |
+| `syscoin-architect` | Multi-contract design, upgrade strategy, access control schemes, tokenomics shape — produces specs, not code |
+| `solidity-engineer` | NEVM Solidity contract authoring, modification, refactoring — implements specs |
+| `nevm-qa-engineer` | Tests (Hardhat/Foundry), fuzzing, invariants, static analysis, audit-readiness reviews |
 
-### Commands (planned set)
+### Agents — future (out of scope for contracts bundle)
 
-- **Build**: `/build-contracts`, `/build-app`, `/scaffold`
-- **Quality**: `/test-foundry`, `/test-hardhat`, `/audit-syscoin`, `/diff-review`, `/gas-profile`, `/debug-user-tx`
-- **Deploy**: `/deploy`, `/verify-contract`, `/bridge-deploy`
-- **Core-specific**: `/spt-create`, `/regtest-up`
-- **Workflow**: `/quick-commit`, `/setup-ci-cd`, `/setup-mcp`, `/update`, `/cleanup`, `/write-docs`, `/explain-code`, `/plan-feature`, `/resync`
+`nevm-frontend-engineer`, `devops-engineer`, `syscoin-guide`, `syscoin-researcher`. Core/UTXO-focused agents (`syscoin-core-engineer`) are deferred until v1 scope expands beyond contracts.
 
-### Rules (lazy-loaded by file pattern)
+### Commands (planned, v0.3.0)
 
-`solidity.md`, `hardhat.md`, `foundry.md`, `ethers.md`, `viem.md`, `typescript.md`, `syscoin-core.md`.
+Contract workflows targeted next: `/build-contracts`, `/test-foundry`, `/test-hardhat`, `/audit-syscoin`, `/diff-review`, `/gas-profile`, `/deploy`, `/verify-contract`. Other commands (`/scaffold`, `/quick-commit`, `/setup-ci-cd`, `/setup-mcp`, `/update`, `/cleanup`, `/write-docs`, `/explain-code`, `/plan-feature`, `/resync`) follow.
 
-### Skills
+### Rules (delivered in v0.2.0, lazy-loaded by file pattern)
 
-- **Local**: `spt-tokens.md`, `syscoin-core-rpc.md`, `nevm-deployment.md`, `pali-wallet.md`, `syscoin-reference.md` (llms.txt-powered discovery)
-- **Vendored submodules**: `trailofbits`, `cloudflare`, `vercel`
+`solidity.md`, `hardhat.md`, `foundry.md`, `typescript.md` — all triggered by contract or contract-adjacent files. Ethers and Viem patterns are folded into `typescript.md` rather than split into separate rules.
+
+### Skills (future)
+
+Planned local skills: `syscoin-reference.md` (llms.txt-powered discovery), `bridge-nevm-utxo.md`, plus Core-side skills (`spt-tokens.md`, `syscoin-core-rpc.md`, `pali-wallet.md`) when Core is in scope. Vendored submodules: `trailofbits`, `cloudflare`, `vercel`.
 
 ### MCP Servers
 
