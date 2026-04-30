@@ -65,7 +65,7 @@ tanenbaum = "${NEVM_TESTNET_RPC_URL}"
 nevm = "${NEVM_RPC_URL}"
 
 [etherscan]
-tanenbaum = { key = "abc", url = "https://tanenbaum.io/api", chain = 5700 }
+tanenbaum = { key = "abc", url = "https://explorer.tanenbaum.io/api", chain = 5700 }
 nevm = { key = "abc", url = "https://explorer.syscoin.org/api", chain = 57 }
 ```
 
@@ -190,14 +190,27 @@ contract DeployScript is Script {
 }
 ```
 
-Run on testnet with verification:
+Run on testnet — deploy first, verify separately (NEVM blocks take ~2.5 min; the indexer races the tx):
 ```bash
+# Step 1: deploy
 forge script script/Deploy.s.sol \
   --rpc-url tanenbaum \
-  --broadcast \
-  --verify \
+  --broadcast
+
+# Step 2: wait 2-3 min, then verify
+forge verify-contract <address> src/Vault.sol:Vault \
+  --chain 5700 \
   --verifier blockscout \
-  --verifier-url https://tanenbaum.io/api
+  --verifier-url https://explorer.tanenbaum.io/api
+```
+
+If the API rejects verification, generate the Standard JSON and upload via the explorer UI:
+```bash
+forge verify-contract <address> src/Vault.sol:Vault \
+  --chain 5700 \
+  --verifier blockscout \
+  --verifier-url https://explorer.tanenbaum.io/api \
+  --show-standard-json-input > verification.json
 ```
 
 For mainnet (`nevm`), swap the URLs and **add typed confirmation** (the PreToolUse hook in `settings.json` requires `DEPLOY TO NEVM MAINNET` before `forge script --broadcast` runs).
@@ -270,9 +283,10 @@ Pin the block number or tests become non-deterministic. Use `vm.makePersistent(a
 
 ## Syscoin-Specific Notes
 
-- NEVM verification via Blockscout: pass `--verifier blockscout --verifier-url https://tanenbaum.io/api` (or explorer.syscoin.org for mainnet). API keys are not required; any non-empty string works for `[etherscan]` in `foundry.toml`.
+- NEVM verification via Blockscout: use `--verifier blockscout --verifier-url https://explorer.tanenbaum.io/api` (or `https://explorer.syscoin.org/api` for mainnet). API keys are not required; any non-empty string works for `[etherscan]` in `foundry.toml`.
+- **Verification timing**: `--verify` on `forge script` races NEVM's ~2.5 min block time and will often fail with "not a smart contract". Always deploy and verify as separate steps with a wait in between.
 - `forge install` and `forge update` pin submodules at commit hashes — commit the submodule pointer after updating.
-- Foundry reads `.env` automatically if you use `vm.envUint("PRIVATE_KEY")` style reads; no `dotenv` package needed.
+- Foundry reads `.env` from the project root (where `foundry.toml` lives). If the Foundry project is in a subdirectory, symlink the parent `.env` into it: `ln -sf "../.env" <project>/.env`.
 - Public NEVM RPC is rate-limited. For CI invariant runs (`[profile.ci]`), configure a paid RPC endpoint in `[rpc_endpoints]`.
 
 ## Mixing with Hardhat (Dual-Framework Projects)

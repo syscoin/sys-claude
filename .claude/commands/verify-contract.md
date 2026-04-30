@@ -24,7 +24,7 @@ If the address format is invalid, stop and report it back literally so the user 
 
 | Network | Verifier URL |
 |---------|--------------|
-| tanenbaum | `https://tanenbaum.io/api` |
+| tanenbaum | `https://explorer.tanenbaum.io/api` |
 | nevm | `https://explorer.syscoin.org/api` |
 
 API key: any non-empty string. Blockscout doesn't require a real key; framework configs ship with `"abc"` placeholders.

@@ -85,8 +85,8 @@ const config: HardhatUserConfig = {
         network: "tanenbaum",
         chainId: 5700,
         urls: {
-          apiURL: "https://tanenbaum.io/api",
-          browserURL: "https://tanenbaum.io",
+          apiURL: "https://explorer.tanenbaum.io/api",
+          browserURL: "https://explorer.tanenbaum.io",
         },
       },
       {
