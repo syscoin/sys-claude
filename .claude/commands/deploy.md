@@ -86,7 +86,7 @@ Parse the deploy output and report:
 - **Deployed contract address(es)** — Foundry's `forge script` prints these in the broadcast log; Hardhat's typical deploy script prints via `console.log`. Capture both.
 - **Transaction hash(es)**
 - **Block number** (if available)
-- **Explorer link**: `https://tanenbaum.io/address/<addr>` or `https://explorer.syscoin.org/address/<addr>`
+- **Explorer link**: `https://explorer.tanenbaum.io/address/<addr>` or `https://explorer.syscoin.org/address/<addr>`
 - **Next-step suggestion**: `Run /verify-contract <address> <network> to verify on Blockscout.`
 
 Save the deploy artifact location (Foundry: `broadcast/`, Hardhat: depends on script). If the project lacks a deployment-tracking convention, suggest one in the report (don't impose).
